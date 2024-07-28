@@ -10,3 +10,8 @@ class SensorData(db.Model):
     motion = db.Column(db.Boolean)
     sound = db.Column(db.Boolean)
     timestamp = db.Column(db.DateTime, default=datetime.utcnow)
+
+@app.route('/')
+def index():
+    data = SensorData.query.order_by(SensorData.timestamp.desc()).limit(100).all()
+    return render_template('index.html', data=data)
