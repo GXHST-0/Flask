@@ -11,6 +11,13 @@
             <th>Motion</th>
             <th>Sound</th>
         </tr>
+        {% for item in data %}
+        <tr>
+            <td>{{ item.timestamp }}</td>
+            <td>{{ "Yes" if item.motion else "No" }}</td>
+            <td>{{ "Yes" if item.sound else "No" }}</td>
+        </tr>
+        {% endfor %}
     </table>
 </body>
 </html>
