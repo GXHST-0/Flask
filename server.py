@@ -15,3 +15,11 @@ class SensorData(db.Model):
 def index():
     data = SensorData.query.order_by(SensorData.timestamp.desc()).limit(100).all()
     return render_template('index.html', data=data)
+
+@app.route('/sensor', methods=['POST'])
+def sensor():
+    data = request.json
+    new_data = SensorData(motion=data['motion'], sound=data['sound'])
+    db.session.add(new_data)
+    db.session.commit()
+    return jsonify({"status": "success"})
