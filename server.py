@@ -14,7 +14,7 @@ class SensorData(db.Model):
 @app.route('/')
 def index():
     data = SensorData.query.order_by(SensorData.timestamp.desc()).limit(100).all()
-    return render_template('index.html', data=data)
+    return render_template('index.html', data=reversed(data))
 
 @app.route('/sensor', methods=['POST'])
 def sensor():
