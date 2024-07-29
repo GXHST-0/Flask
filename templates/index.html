@@ -1,23 +1,30 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Sensor Data</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sensor Data Visualization</title>
 </head>
 <body>
     <h1>Sensor Data</h1>
+    
     <table>
-        <tr>
-            <th>Timestamp</th>
-            <th>Motion</th>
-            <th>Sound</th>
-        </tr>
-        {% for item in data %}
-        <tr>
-            <td>{{ item.timestamp }}</td>
-            <td>{{ "Yes" if item.motion else "No" }}</td>
-            <td>{{ "Yes" if item.sound else "No" }}</td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>Motion</th>
+                <th>Sound</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr>
+                <td>{{ item.timestamp }}</td>
+                <td>{{ "Yes" if item.motion else "No" }}</td>
+                <td>{{ "Yes" if item.sound else "No" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 </body>
 </html>
